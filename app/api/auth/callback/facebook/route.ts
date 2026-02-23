@@ -11,7 +11,7 @@ export async function GET(request: Request) {
     const body: Record<string, string> = {
         client_id: process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_ID!,
         client_secret: process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_SECRET!,
-        redirect_uri: "http://localhost:3000/api/auth/callback/facebook",
+        redirect_uri: process.env.NEXTAUTH_URL +"/api/auth/callback/facebook",
         code: code!,
     }
     const params = new URLSearchParams(body);
