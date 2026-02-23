@@ -34,6 +34,6 @@ export async function GET(request: Request) {
   });
 
   const userProfile = await userResponse.json();
-  console.log("userProfile: ",userProfile);
-  return NextResponse.json({ Message: searchParams });
+  console.log("userProfile: ", userProfile);
+  return NextResponse.json({ Message: "success", data: userProfile });
 }

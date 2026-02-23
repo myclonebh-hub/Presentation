@@ -11,7 +11,7 @@ export async function GET(request: Request) {
     const body: Record<string, string> = {
         client_id: process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_ID!,
         client_secret: process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_SECRET!,
-        redirect_uri: process.env.NEXT_PUBLIC_NEXTAUTH_URL +"/api/auth/callback/facebook",
+        redirect_uri: process.env.NEXT_PUBLIC_NEXTAUTH_URL + "/api/auth/callback/facebook",
         code: code!,
     }
     const params = new URLSearchParams(body);
@@ -25,7 +25,7 @@ export async function GET(request: Request) {
     });
 
     const data = await response.json();
-    console.log("VIP Pass (Access Token):", );
+    console.log("VIP Pass (Access Token):",);
     // This 'data' object now contains your VIP Pass!
     console.log("Your VIP Pass:", data);
     const access_token = data.access_token;
@@ -36,5 +36,5 @@ export async function GET(request: Request) {
 
     const userProfile = await userResponse.json();
     console.log("userProfile: ", userProfile);
-    return NextResponse.json({ Message: searchParams });
+    return NextResponse.json({ Message: "success", data: userProfile });
 }

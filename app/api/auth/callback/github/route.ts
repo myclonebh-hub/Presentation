@@ -17,7 +17,7 @@ export async function GET(request: Request) {
             client_id: process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID,
             client_secret: process.env.NEXT_PUBLIC_GITHUB_CLIENT_SECRET,
             code: code,
-            redirect_uri: process.env.NEXT_PUBLIC_NEXTAUTH_URL +"/api/auth/callback/github",
+            redirect_uri: process.env.NEXT_PUBLIC_NEXTAUTH_URL + "/api/auth/callback/github",
         }),
     });
 
@@ -35,5 +35,8 @@ export async function GET(request: Request) {
 
     const githubProfile = await userResponse.json();
     console.log("GitHub ID (Provider ID):", githubProfile);
-    return NextResponse.json({ Message: searchParams });
+    return NextResponse.json({
+        Message: "Success",
+        data: githubProfile // Send the object directly
+    });
 }
